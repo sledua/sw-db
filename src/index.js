@@ -1,16 +1,26 @@
-const getResource = async (url) => {
-    const res = await fetch(url);
+import { restElement } from "@babel/types";
+
+class SwapiService {
+    _apiBase = 'https://swapi.co/api';
+    async getResource(url) {
+        const res = await fetch(`${this._apiBase}${url}`);
     if(!res.ok){
         throw new Error(`подкинь дров ${url}` `но статус ${res.status}`)
-    };
-    const body = await res.json();
-    return body;
-};
-getResource('https://swapi.co/api/people/1/')
-.then((body) =>{
-    console.log(body);
-})
-.catch((err) => {
-    console.error('Нет коннекта подкинь дров', err);
-});
+    }
+    return await res.json();
+    }
 
+    getAllPeople() {
+        return this.getResource(`/people/`);
+        return res.resolts
+    }
+    getAllPerson(id) {
+        return this.getResource(`/people/${id}/`);
+    }
+}
+
+const swapi = new SwapiService();
+
+swapi.getAllPeople().then(() => {
+
+});
