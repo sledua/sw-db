@@ -4,9 +4,10 @@ import Header from '../header';
 import RandomPlanet from '../random-planet';
 
 import './app.css';
-import ItemList from "../item-list/item-list";
-import PersonDetails from "../planet-list/planet-list";
-import SwapiService  from "../../services/services";
+import ItemList from '../item-list';
+//import PlanetList from '../planet-list/planet-list';
+//import PersonList from '../persen-list/persen-list';
+//import SwapiService  from '../../services/services';
 
 export default class App extends Component {
     render (){
@@ -14,8 +15,9 @@ export default class App extends Component {
         return (
             <div className="stardb-app">
                 <Header />
-                <PersonDetails/>
-                
+                <RandomPlanet/>
+                <ItemList />
+
             </div>
         );
     }

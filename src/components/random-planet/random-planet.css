@@ -1,0 +1,18 @@
+.custom-cart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.random-image{
+    width: 20%;
+    height: 30%;
+    display: block;
+}
+.card-body p {
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+.card-body p:last-child{
+    border-bottom:  none;
+}
