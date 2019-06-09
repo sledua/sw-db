@@ -3,34 +3,48 @@ import SwapiService from '../../services/services'
 import './random-planet.css';
 import Spiner from '../spiner/spiner';
 
+import ErrorIndicator from '../error-Indicator/error-Indicator';
+
 export default class RandomPlanet extends Component {
     swapiService = new SwapiService();
     state = {
         planet: {},
-        loading: true
+        loading: true,
+        error: false
     };
     constructor(){
         super();
         this.updatePlanet();
+        //setInterval(this.updatePlanet, 2000);
     }
     onPlanetLoaded = (planet) => {
         this.setState({planet, loading: false});
     };
-    updatePlanet () {
-        const id = 12;
+    onError = (err) => {
+        this.setState({
+            error: true,
+            loading: false
+        });
+    };
+    updatePlanet = () => {
+        const id = Math.floor(Math.random()*23) + 3;
         this.swapiService
             .getPlanet(id)
-            .then(this.onPlanetLoaded);
+            .then(this.onPlanetLoaded)
+            .catch(this.onError);
         };
     render () {
-        const { loading ,planet } = this.state;
+        const { loading, planet, error } = this.state;
+        const hasData = !(loading || error);
+        const errorMassage = error ? <ErrorIndicator/> : null;
         const spiner = loading ? <Spiner/> : null;
-        const contetnt = !loading ? <PlanetView planet={planet}/> : null;
+        const contetnt = hasData ? <PlanetView planet={planet}/> : null;
         return (
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="card text-white bg-primary mb-3 custom-cart">
+                            {errorMassage}
                             {spiner}
                             {contetnt}
                         </div>
