@@ -1,11 +1,17 @@
 import React, {Component} from "react";
-import styles from './Dashboard.module.css'
+import styles from './Dashboard.module.css';
 import Button from "../../components/UI/Button/Button";
-
+import {createControl} from "../../form/form";
+import Input from "../../components/UI/input/input";
+import Select from "../../components/UI/Select/select";
 export default class Dashboard extends Component{
     state = {
+        rol: 1,
         formControls: {
-
+            option0: createControl({
+                label: 'Login',
+                errorMessage: 'Login invalid'
+            },{required: true})
         }
     }
     submitHandler = event => {
@@ -17,7 +23,41 @@ export default class Dashboard extends Component{
     saveHandler = () => {
 
     }
+    changeHandler = (value, controlName) => {
+
+    }
+    selectChangeHandler = event => {
+        this.setState({
+            rol: +event.target.value
+        })
+    }
+    renderInputs () {
+        return Object.keys(this.state.formControls).map((controlName, index) => {
+            const control = this.state.formControls[controlName]
+            return (
+                <Input
+                    label={control.label}
+                    value={control.value}
+                    valid={control.valid}
+                    shouldValidate={!!control.validate}
+                    touched={control.touched}
+                    errorMessage={control.errorMessage}
+                    onChange={event => this.changeHandler(event.target.value, controlName)}
+                />
+            )
+        })
+    }
     render() {
+        const select = <Select
+            label="rol"
+            value={this.state.rol}
+            onChange={this.selectChangeHandler}
+            options={[
+                {text: 'admin', value: 1},
+                {text: 'moderator', value: 2},
+                {text: 'user', value: 3},
+            ]}
+        />
         return(
             <div className={styles['dashboard_container']}>
                 <h1>Dashboard</h1>
@@ -30,8 +70,8 @@ export default class Dashboard extends Component{
                     <h3>Create user</h3>
                     <Button type="primary" onClick={this.createHandler}>Create</Button>
                     <form onSubmit={this.submitHandler}>
-                        <input type="text"/>
-                        <select></select>
+                        {this.renderInputs()}
+                        {select}
                         <input type="text"/>
                         <input type="text"/>
                         <input type="text"/>
