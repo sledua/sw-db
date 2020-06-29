@@ -1,30 +1,64 @@
 import React, {Component} from "react";
 import styles from './Dashboard.module.css';
 import Button from "../../components/UI/Button/Button";
-import {createControl} from "../../form/form";
+import {createControl, validate, validateForm} from "../../form/form";
 import Input from "../../components/UI/input/input";
 import Select from "../../components/UI/Select/select";
 export default class Dashboard extends Component{
     state = {
         rol: 1,
+        isFormValid: false,
         formControls: {
             option0: createControl({
                 label: 'Login',
                 errorMessage: 'Login invalid'
-            },{required: true})
+            },{required: true}),
+            option1: createControl({
+                label: 'Password',
+                errorMessage: 'Password invalid'
+            },{required: true}),
+            option2: createControl({
+                label: 'Password again',
+                errorMessage: 'Password invalid'
+            },{required: true}),
+            option3: createControl({
+                label: 'Email',
+                errorMessage: 'Email invalid'
+            },{required: true}),
+            option4: createControl({
+                label: 'First Name',
+                errorMessage: 'Email invalid'
+            },{required: true}),
+            option5: createControl({
+                label: 'Last Name',
+                errorMessage: 'Email invalid'
+            },{required: true}),
+            option6: createControl({
+                label: 'Birthday',
+                errorMessage: 'Email invalid'
+            },{required: true}),
         }
     }
     submitHandler = event => {
         event.preventDefault()
     }
-    createHandler = () => {
-
+    createHandler = event => {
+        event.preventDefault()
     }
-    saveHandler = () => {
-
+    saveHandler = event => {
+        event.preventDefault()
     }
     changeHandler = (value, controlName) => {
-
+        const formControls = {...this.state.formControls}
+        const control = { ...formControls[controlName] }
+        control.touched = true
+        control.value = value
+        control.valid = validate(control.value, control.validation)
+        formControls[controlName] = control
+        this.setState({
+            formControls,
+            isFormValid: validateForm(formControls)
+        })
     }
     selectChangeHandler = event => {
         this.setState({
@@ -36,6 +70,7 @@ export default class Dashboard extends Component{
             const control = this.state.formControls[controlName]
             return (
                 <Input
+                    key={controlName + index}
                     label={control.label}
                     value={control.value}
                     valid={control.valid}
@@ -72,12 +107,8 @@ export default class Dashboard extends Component{
                     <form onSubmit={this.submitHandler}>
                         {this.renderInputs()}
                         {select}
-                        <input type="text"/>
-                        <input type="text"/>
-                        <input type="text"/>
-                        <input type="text"/>
 
-                        <Button type="success" onClick={this.saveHandler}>Save</Button>
+                        <Button type="success" onClick={this.saveHandler} disabled={!this.state.isFormValid}>Save</Button>
                     </form>
                 </div>
                 <div className={styles['dashboard_container_name']}>
