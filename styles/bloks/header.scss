@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  padding-left: 3.8rem;
+  padding-right: 3rem;
+  border-bottom: 2px solid $border-color;
+  box-shadow: 0 0 4px rgba($border-color, .5);
+  @include breakpoint($mobile-bp) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+.header__left {
+  display: flex;
+  width: 40%;
+  justify-content: flex-start;
+  @include breakpoint($tablet-bp) {
+    width: 40%;
+  }
+  @include breakpoint($mobile-bp) {
+    width: 100%;
+  }
+}
+.header__center {
+  //display: flex;
+  //width: 40%;
+  //justify-content: flex-start;
+  //align-items: center;
+  display: none;
+}
+.header__right {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  @include breakpoint($tablet-bp) {
+    width: 60%;
+  }
+  .nav {
+    @include breakpoint($mobile-bp) {
+      display: none;
+    }
+  }
+
+}

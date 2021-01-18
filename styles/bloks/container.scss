@@ -1,0 +1,12 @@
+.container {
+  margin: 0 auto;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  &.has--poster {
+    background-color: $bg-top-poster;
+  }
+  @include breakpoint($mobile-bp) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

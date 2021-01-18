@@ -1,65 +1,128 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import {MainLayout} from "../components/MainLayout";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <MainLayout title={'Главная'}>
+          <div className="container has--poster">
+              <div className="poster">
+                  <div className="poster__texts">
+                      <h2>Брать и просто переводить</h2>
+                      <p>тогда берем и читаем</p>
+                  </div>
+                  <div className="poster__image">
+                      <Image
+                          src='/images/poster.png'
+                          alt='lorem'
+                          className="img-responsive"
+                          width={200}
+                          height={200}
+                      />
+                  </div>
+            </div>
         </div>
-      </main>
+      <div className='container'>
+          <div className="posts__list">
+              <div className="posts__list__item top">
+                  <div className="item__text">
+                      <h3>Постер для дома</h3>
+                      <p>Краткий гайд по созданию кастомной постерной темы, и то что нам понадобиться. Как дела будут
+                          обстоять с подходами инструментами и утт вопрос текста в принципе тут вопрос так себе давай
+                          попробую просто подсчитать сколько мне нужно текста для нормального вывода текста</p>
+                      <div className="item__text__info">
+                          <time>27.12.2020</time>
+                          <a href="">Читать</a>
+                      </div>
+                  </div>
+                  <img src="images/posts/test_img.jpg" alt=""/>
+              </div>
+              <div className="posts__list__item small left">
+                  <div className="item__img">
+                      <Image
+                          src='/images/posts/0test_img.jpg'
+                          alt='lorem'
+                          className="img-responsive"
+                          width={200}
+                          height={200}
+                      />
+                  </div>
+                  <div className="item__text">
+                      <h3>Постер для дома</h3>
+                      <p>Краткий гайд по созданию кастомной постерной темы, и то что нам понадобиться. Как дела будут
+                          обстоять с подходами инструментами и утт вопрос текста в принципе тут вопрос так себе давай
+                          попробую просто подсчитать сколько мне нужно текста для нормального вывода текста</p>
+                      <div className="item__text__info">
+                          <time>27.12.2020</time>
+                          <a href="">Читать</a>
+                      </div>
+                  </div>
+              </div>
+              <div className="posts__list__item small center">
+                  <div className="item__img">
+                      <Image
+                          src='/images/posts/1test_img.jpg'
+                          alt='lorem'
+                          className="img-responsive"
+                          width={300}
+                          height={300}
+                      />
+                  </div>
+                  <div className="item__text">
+                      <h3>Постер для дома</h3>
+                      <p>Краткий гайд по созданию кастомной постерной темы, и то что нам понадобиться. Как дела будут
+                          обстоять с подходами инструментами и утт вопрос текста в принципе тут вопрос так себе давай
+                          попробую просто подсчитать сколько мне нужно текста для нормального вывода текста</p>
+                      <div className="item__text__info">
+                          <time>27.12.2020</time>
+                          <a href="">Читать</a>
+                      </div>
+                  </div>
+              </div>
+              <div className="posts__list__item small right">
+                  <div className="item__img ">
+                      <Image
+                        src='/images/posts/0test_img.jpg'
+                        alt='lorem'
+                        className="img-responsive"
+                        width={300}
+                        height={300}
+                      />
+                  </div>
+                  <div className="item__text">
+                      <h3>Постер для дома</h3>
+                      <p>Краткий гайд по созданию кастомной постерной темы, и то что нам понадобиться. Как дела будут
+                          обстоять с подходами инструментами и утт вопрос текста в принципе тут вопрос так себе давай
+                          попробую просто подсчитать сколько мне нужно текста для нормального вывода текста</p>
+                      <div className="item__text__info">
+                          <time>27.12.2020</time>
+                          <a href="">Читать</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div className="post__primary">
+              <div className="post__primary__text">
+                  <h3><a href="">Lorem ipsum dolor sit amet</a></h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam asperiores consequuntur dicta
+                      dolores, dolorum ducimus eligendi enim eveniet incidunt ipsa ipsum laudantium maxime nihil, quasi
+                      reprehenderit saepe tenetur ullam vitae.</p>
+                  <div className="primary__text__info">
+                      <time>27.12.2020</time>
+                      <a href="">Читать</a>
+                  </div>
+              </div>
+              <div className="post__primary__img">
+                  <div className="img-resp">
+                          <Image
+                              src='/images/posts/prpost.jpg'
+                              alt='lorem'
+                              width={300}
+                              height={300}
+                          />
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
-  )
+                  </div>
+              </div>
+          </div>
+      </div>
+      </MainLayout>)
 }
